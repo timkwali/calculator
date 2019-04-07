@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang = "en-us">
+  <head>
+    <meta charset = "utf-8">
+    <title>calculator.html</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "style.css" >
+  </head>
+
+  <body onload = "createButtons()">
+    <input type = "text" >
+    <div id = "container"></div>
+    <button id = "test">test</button>
+    <script>
+      function add(a, b) {
+        return a + b;
+      }
+
+      function substract(a, b) {
+        return a - b;
+      }
+
+      function multiply(a, b) {
+        return a * b;
+      }
+
+      function divide(a, b) {
+        return a / b;
+      }
+
+      function operator(a, b, oper) {
+        return oper(a, b);
+      }
+
+      function createButtons() {
+        for(let i = 0; i < 18; i++) {
+          div = document.createElement("button");
+          div.classList.add("box");
+          div.innerHTML = array[i];
+          div.value = array[i];
+          container.appendChild(div);
+        }
+      }
+
+      function clickButtons() {
+        display += div.innerHTML;
+        input.value = display;
+        console.log(display);
+      }
+
+      const array = [1, 2, 3, "+", 4, 5, 6, "-", 7, 8, 9, "/", 0, "BkSpc", "Clear", "*", ".", "="];
+      const container = document.getElementById("container");
+      let buttons = document.querySelectorAll("button");
+      let input = document.querySelector("input");
+      let display = "";
+      let test = document.getElementById("test");
+
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", clickButtons)
+      });
+
+      test.addEventListener("click", clickButtons);
+    </script>
+  </body>
+</html>
