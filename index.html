@@ -8,60 +8,31 @@
           href = "style.css" >
   </head>
 
-  <body onload = "createButtons()">
+  <body>
     <input type = "text" >
-    <div id = "container"></div>
-    <button id = "test">test</button>
-    <script>
-      function add(a, b) {
-        return a + b;
-      }
-
-      function substract(a, b) {
-        return a - b;
-      }
-
-      function multiply(a, b) {
-        return a * b;
-      }
-
-      function divide(a, b) {
-        return a / b;
-      }
-
-      function operator(a, b, oper) {
-        return oper(a, b);
-      }
-
-      function createButtons() {
-        for(let i = 0; i < 18; i++) {
-          div = document.createElement("button");
-          div.classList.add("box");
-          div.innerHTML = array[i];
-          div.value = array[i];
-          container.appendChild(div);
-        }
-      }
-
-      function clickButtons() {
-        display += div.innerHTML;
-        input.value = display;
-        console.log(display);
-      }
-
-      const array = [1, 2, 3, "+", 4, 5, 6, "-", 7, 8, 9, "/", 0, "BkSpc", "Clear", "*", ".", "="];
-      const container = document.getElementById("container");
-      let buttons = document.querySelectorAll("button");
-      let input = document.querySelector("input");
-      let display = "";
-      let test = document.getElementById("test");
-
-
-      buttons.forEach((button) => {
-        button.addEventListener("click", clickButtons)
-      });
-
-      test.addEventListener("click", clickButtons);
+    <div id = "container">
+      <button id = "1" onclick = "clickNum(one)">1</button>
+      <button id = "2" onclick = "clickNum(two)">2</button>
+      <button id = "3" onclick = "clickNum(three)">3</button>
+      <button id = "add" onclick = "clickOperator(add, '+')">+</button>
+      <button id = "4" onclick = "clickNum(four)">4</button>
+      <button id = "5" onclick = "clickNum(five)">5</button>
+      <button id = "6" onclick = "clickNum(six)">6</button>
+      <button id = "substract" onclick = "clickOperator(substract, '-')">-</button>
+      <button id = "7" onclick = "clickNum(seven)">7</button>
+      <button id = "8" onclick = "clickNum(eight)">8</button>
+      <button id = "9" onclick = "clickNum(nine)">9</button>
+      <button id = "divide" onclick = "clickOperator(divide, '/')">/</button>
+      <button id = "0" onclick = "clickNum(zero)">0</button>
+      <button id = "bkS">BkSpc</button>
+      <button id = "clr">Clear</button>
+      <button id = "multiply" onclick = "clickOperator(multiply, '*')">*</button>
+      <button id = "dot" onclick = "clickNum(dot)">.</button>
+      <button id= "eqls" onclick = "operate()">=</button>
+    </div>
+  
+    <script type = "text/javascript"
+            src = "script.js">
     </script>
   </body>
 </html>
