@@ -1,5 +1,4 @@
  //CALCULATOR
-
 let add = () => Number(a) + Number(b); 
 
 let substract = () => Number(a) - Number(b);
@@ -46,17 +45,16 @@ function operate() { //executes calculator operations
   } else if(input == 0 && oprt == divide) { //guards against calculator crash
     display.innerHTML = `Smart ass eh? ${a} divide by zero is infinity!!!`
   } else {
-    b = input;                // to run operations
-    display.innerHTML =  oprt(a, b); // on any two given numbers
+    b = input;                
+    display.innerHTML =  oprt(a, b); 
     display.innerHTML = display.innerHTML.substr(0, 12); //limits the display to twelve characters
-    console.log(`result: ${display.innerHTML}`);
     a = display.innerHTML;
     input = ""
     b = "";
   }
 }
 
-function clearScreen() {
+function clearScreen() { //reset everything
   a = "";
   b = "";
   oprt = "";
@@ -64,7 +62,7 @@ function clearScreen() {
   display.innerHTML = 0;
 }
 
-function backSpace() {
+function backSpace() { //deletes last input
   if(display.innerHTML.length == 1) {
     display.innerHTML = 0;
     input = "";
@@ -75,22 +73,22 @@ function backSpace() {
   }
 }
 
-function getSignKeys(e) {
+function getSignKeys(e) { //avoids conflictions with "numKey"
   key = document.querySelector(`button[data-key = "${e.keyCode}"]`);  
   if(key) {
     key.onclick();
   } else{return;}
 }
 
-function inputDot() {
+function inputDot() { //allows only one input of "."
   if(input.includes(".") || (display.innerHTML.includes(".")) ) {
-    flashScreen(); //to allow only one input of "."
+    flashScreen(); 
   } else {
     clickNum(dot);
   } //end if
 }
 
-function flashScreen() {
+function flashScreen() { //indicates event occurrence
   display.style.backgroundColor = "red";
   setTimeout( () => {
     display.style.backgroundColor = "white"
@@ -111,12 +109,13 @@ const dot = document.querySelector("#dot");
 const display = document.querySelector("p"); //Shows calculator inputs and results
 const numKey = document.querySelectorAll(".key"); //gets keyboard number keys
 const signKey = document.querySelectorAll(".sign"); //gets keyboard sign keys
-
+const clear = document.querySelector("#clr");
 let a = ""; //holds first value for calculation
 let b = ""; //holds second value for calculation
 let oprt = ""; //temporarily holds current calculation operator
 let input = ""; //temporarily holds calcutor input 
 
-numKey.forEach( test => this.addEventListener("keydown", () => this.onclick() ) );
-signKey.forEach( test => this.addEventListener("keydown", getSignKeys ) );
+numKey.forEach( () => this.addEventListener("keydown", () => this.onclick() ) );
+signKey.forEach( () => this.addEventListener("keydown", getSignKeys ) );
 dot.addEventListener("keydown", inputDot);
+clear.addEventListener("keydown", clearScreen);
