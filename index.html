@@ -24,12 +24,14 @@
       <button class = "key" id = "9" onclick = "clickNum(nine)" data-key = "105" >9</button>
       <button class = "sign" id = "divide" onclick = "clickOperator(divide, '/')" data-key = "111" >/</button>
       <button class = "key" id = "0" onclick = "clickNum(zero)" data-key = "96" >0</button>
-      <button id = "bkS" onclick = "backSpace()" data-key = "8">BkSpc</button>
-      <button id = "clr" onclick = "clearScreen()" data-key = "32" >Clear</button>
-      <button class = "sign" id = "multiply" onclick = "clickOperator(multiply, '*')" data-key = "106" >*</button>
       <button id = "dot" data-key = "110" onclick = "inputDot()">.</button>
       <button id = "eqls" onclick = "operate()" data-key = "13" >=</button>
+      <button class = "sign" id = "multiply" onclick = "clickOperator(multiply, '*')" data-key = "106" >*</button>
+      <button id = "bkS" onclick = "backSpace()" data-key = "8" style = "flex-basis: 150px">BkSpc</button>
+      <button id = "clr" onclick = "clearScreen()" data-key = "32" style = "flex-basis: 150px">Clear</button>
     </div>
+
+    <div id = "message"></div>
   
     <script type = "text/javascript"
             src = "script.js">

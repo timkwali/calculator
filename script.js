@@ -43,7 +43,7 @@ function operate() { //executes calculator operations
   if(a == "" || input == "") { 
     flashScreen(); //stops the calculator from bringing up error messages when equals to is pressed prematurely
   } else if(input == 0 && oprt == divide) { //guards against calculator crash
-    display.innerHTML = `Smart ass eh? ${a} divide by zero is infinity!!!`
+    message.innerHTML = `Smart ass eh? ${a} divide by zero is infinity!!!`
   } else {
     b = input;                
     display.innerHTML =  oprt(a, b); 
@@ -110,6 +110,7 @@ const display = document.querySelector("p"); //Shows calculator inputs and resul
 const numKey = document.querySelectorAll(".key"); //gets keyboard number keys
 const signKey = document.querySelectorAll(".sign"); //gets keyboard sign keys
 const clear = document.querySelector("#clr");
+const message = document.querySelector("#message");
 let a = ""; //holds first value for calculation
 let b = ""; //holds second value for calculation
 let oprt = ""; //temporarily holds current calculation operator
