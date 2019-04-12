@@ -61,6 +61,7 @@ function clearScreen() { //reset everything
   input = "";
   display.innerHTML = 0;
   flashScreen();
+  message.innerHTML = "";
 }
 
 function backSpace() { //deletes last input
