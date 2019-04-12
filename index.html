@@ -9,26 +9,26 @@
   </head>
 
   <body>
-    <input type = "text" >
+    <p>0</p>
     <div id = "container">
-      <button id = "1" onclick = "clickNum(one)">1</button>
-      <button id = "2" onclick = "clickNum(two)">2</button>
-      <button id = "3" onclick = "clickNum(three)">3</button>
-      <button id = "add" onclick = "clickOperator(add, '+')">+</button>
-      <button id = "4" onclick = "clickNum(four)">4</button>
-      <button id = "5" onclick = "clickNum(five)">5</button>
-      <button id = "6" onclick = "clickNum(six)">6</button>
-      <button id = "substract" onclick = "clickOperator(substract, '-')">-</button>
-      <button id = "7" onclick = "clickNum(seven)">7</button>
-      <button id = "8" onclick = "clickNum(eight)">8</button>
-      <button id = "9" onclick = "clickNum(nine)">9</button>
-      <button id = "divide" onclick = "clickOperator(divide, '/')">/</button>
-      <button id = "0" onclick = "clickNum(zero)">0</button>
-      <button id = "bkS" onclick = "backSpace()">BkSpc</button>
-      <button id = "clr" onclick = "clearScreen()">Clear</button>
-      <button id = "multiply" onclick = "clickOperator(multiply, '*')">*</button>
-      <button id = "dot" >.</button>
-      <button id= "eqls" onclick = "operate()">=</button>
+      <button class = "key" id = "1" onclick = "clickNum(one)" data-key = "97" >1</button>
+      <button class = "key" id = "2" onclick = "clickNum(two)" data-key = "98" >2</button>
+      <button class = "key" id = "3" onclick = "clickNum(three)" data-key = "99" >3</button>
+      <button class = "sign" id = "add" onclick = "clickOperator(add, '+')" data-key = "107" >+</button>
+      <button class = "key" id = "4" onclick = "clickNum(four)" data-key = "100" >4</button>
+      <button class = "key" id = "5" onclick = "clickNum(five)" data-key = "101" >5</button>
+      <button class = "key" id = "6" onclick = "clickNum(six)" data-key = "102" >6</button>
+      <button class = "sign" id = "substract" onclick = "clickOperator(substract, '-')" data-key = "109" >-</button>
+      <button class = "key" id = "7" onclick = "clickNum(seven)" data-key = "103" >7</button>
+      <button class = "key" id = "8" onclick = "clickNum(eight)" data-key = "104" >8</button>
+      <button class = "key" id = "9" onclick = "clickNum(nine)" data-key = "105" >9</button>
+      <button class = "sign" id = "divide" onclick = "clickOperator(divide, '/')" data-key = "111" >/</button>
+      <button class = "key" id = "0" onclick = "clickNum(zero)" data-key = "96" >0</button>
+      <button id = "bkS" onclick = "backSpace()" data-key = "8">BkSpc</button>
+      <button id = "clr" onclick = "clearScreen()" data-key = "97" >Clear</button>
+      <button class = "sign" id = "multiply" onclick = "clickOperator(multiply, '*')" data-key = "106" >*</button>
+      <button id = "dot" data-key = "110" >.</button>
+      <button id = "eqls" onclick = "operate()" data-key = "13" >=</button>
     </div>
   
     <script type = "text/javascript"

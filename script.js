@@ -8,31 +8,36 @@ let multiply = () => Number(a) * Number(b);
 
 let divide = () => Number(a) / Number(b);
 
-function clickNum(num) {
-  if(input == "") { 
-    display.value = num.innerHTML;
-    input += num.innerHTML; 
-  } else if (input != "") { 
-    display.value += num.innerHTML;
-    input += num.innerHTML; 
+function clickNum(num) { //inputs "." and numbers into the calculator
+  if(display.innerHTML.length < 12) { //limits max input and display to twelve characters
+    if(input == "") { 
+      display.innerHTML = num.innerHTML;
+      input += num.innerHTML; 
+    } else if (input != "") { 
+      display.innerHTML += num.innerHTML;
+      input += num.innerHTML; 
+    }
+  } else {
+    flashScreen();
   }
 }
 
 function clickOperator(operator, sign) {
   console.log(input);
+  flashScreen();
   if(a != "" && input != "" && (oprt == add || oprt == substract || oprt == multiply || oprt == divide) ) {
     operate();
     oprt = operator;
     console.log(sign);
   } else {
     oprt = operator;
-    display.value = sign;
+    display.innerHTML = sign;
     if(a == "" && input != "") {
       a = input;
       input = "";
       console.log(sign);
     } else if(a != "" && input == "") {
-      display.value = sign;
+      display.innerHTML = sign;
       console.log(sign);
     } 
   }
@@ -40,16 +45,17 @@ function clickOperator(operator, sign) {
 
 function operate() {
   console.log(input);
+  flashScreen();
   if(a == "" || input == "") {
     flashScreen();
   } else if(input == 0 && oprt == divide) {
-    display.value = `ERROR! Can't divide ${a} by zero!!!`
+    display.innerHTML = `Smart ass eh? ${a} divide by zero is infinity!!!`
   } else {
     b = input;                // to run operations
-    display.value =  oprt(a, b); // on any two given numbers
-    display.value = display.value.substr(0, 12);
-    console.log(`result: ${display.value}`);
-    a = display.value;
+    display.innerHTML =  oprt(a, b); // on any two given numbers
+    display.innerHTML = display.innerHTML.substr(0, 12); //limits the display to twelve characters
+    console.log(`result: ${display.innerHTML}`);
+    a = display.innerHTML;
     input = ""
     b = "";
   }
@@ -60,16 +66,40 @@ function clearScreen() {
   b = "";
   oprt = "";
   input = "";
-  display.value = ""
+  display.innerHTML = 0;
 }
 
 function backSpace() {
-  input = input.substring(0, input.length - 1);
-  display.value = display.value.substring(0, display.value.length - 1);
+  if(display.innerHTML.length == 1) {
+    display.innerHTML = 0;
+    input = "";
+    flashScreen();
+  } else {
+    input = input.substring(0, input.length - 1);
+    display.innerHTML = display.innerHTML.substring(0, display.innerHTML.length - 1);
+  }
 }
 
+function getSignKeys(e) {
+  key = document.querySelector(`button[data-key = "${e.keyCode}"]`);  
+  if(key) {
+    key.onclick();
+  } else{return;}
+}
+
+function getDotKey(e) {
+  if(input.includes(".") || (display.innerHTML.includes(".")) ) {
+    flashScreen(); //to allow only one input of "."
+  } else {
+    clickNum(dot);
+  } //end if
+} 
+
 function flashScreen() {
-  console.log("Put flashScreen Code here!")
+  display.style.backgroundColor = "red";
+  setTimeout( () => {
+    display.style.backgroundColor = "white"
+  }, 3);
 }
 
 const one = document.getElementById("1");
@@ -82,8 +112,10 @@ const seven = document.getElementById("7");
 const eight = document.getElementById("8");
 const nine = document.getElementById("9");
 const zero = document.getElementById("0");
-const dot = document.getElementById("dot");
-let display = document.querySelector("input"); //Shows calculator inputs and results
+const dot = document.querySelector("#dot");
+const display = document.querySelector("p"); //Shows calculator inputs and results
+const numKey = document.querySelectorAll(".key"); //gets keyboard number keys
+const signKey = document.querySelectorAll(".sign"); //gets keyboard sign keys
 
 let a = ""; //holds first value for calculation
 let b = ""; //holds second value for calculation
@@ -92,9 +124,12 @@ let input = ""; //temporarily holds calcutor input
 
 
 dot.addEventListener("click", () => {
-  if(input.includes(".") || (display.value.includes(".")) ) {
-    flashScreen();
+  if(input.includes(".") || (display.innerHTML.includes(".")) ) {
+    flashScreen(); //to allow only one input of "."
   } else {
     clickNum(dot);
   } //end if
 });
+
+numKey.forEach( test => this.addEventListener("keydown", () => this.onclick() ) );
+signKey.forEach( test => this.addEventListener("keydown", getSignKeys ) );
