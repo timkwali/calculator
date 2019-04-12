@@ -24,10 +24,12 @@ button {
   font-family: monospace;
   font-size: 20px;
   background-color: grey;
+  border: 1px solid grey;
 }
 
 button:hover {
-  
+  color: yellow;
+  font-size: 35px;
 }
 
 p {
@@ -35,6 +37,7 @@ p {
   text-align: left;
   margin: 0px;
   width: 300px;
+  font-size: 28;
   height: 40px;
   border: 1px solid black;
   border-radius: 5px;
@@ -43,17 +46,28 @@ p {
   background-color: white;
 }
 
-#clr {
-  background-color: rgb(255, 17, 0);
+#clr #bkS {
+  background-color: grey;
+  font-family: cursive;
 }
 
-#bkS {
-  background-color: rgb(255, 94, 0);
+#clr:hover {
+  color: rgb(255, 17, 0);
+}
+
+#bkS:hover {
+  color: rgb(255, 94, 0);
+  font-size: 26px;
 }
 
 .sign {
   background-color: #95a2b9;
   color: yellow;
+  border: 1px solid #95a2b9;
+}
+
+.sign:hover {
+  color: red;
 }
 
 #eqls {
@@ -62,6 +76,10 @@ p {
 
 #dot {
   color: red;
+}
+
+#dot:hover {
+  color: yellow;
 }
 
 #message {
