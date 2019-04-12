@@ -1,6 +1,6 @@
  //CALCULATOR
 
-let add = () => Number(a) + Number(b);
+let add = () => Number(a) + Number(b); 
 
 let substract = () => Number(a) - Number(b);
 
@@ -22,33 +22,28 @@ function clickNum(num) { //inputs "." and numbers into the calculator
   }
 }
 
-function clickOperator(operator, sign) {
-  console.log(input);
+function clickOperator(operator, sign) { //inputs operator into the calculator
   flashScreen();
   if(a != "" && input != "" && (oprt == add || oprt == substract || oprt == multiply || oprt == divide) ) {
     operate();
     oprt = operator;
-    console.log(sign);
   } else {
     oprt = operator;
     display.innerHTML = sign;
     if(a == "" && input != "") {
       a = input;
       input = "";
-      console.log(sign);
     } else if(a != "" && input == "") {
       display.innerHTML = sign;
-      console.log(sign);
     } 
   }
 }
 
-function operate() {
-  console.log(input);
+function operate() { //executes calculator operations
   flashScreen();
-  if(a == "" || input == "") {
-    flashScreen();
-  } else if(input == 0 && oprt == divide) {
+  if(a == "" || input == "") { 
+    flashScreen(); //stops the calculator from bringing up error messages when equals to is pressed prematurely
+  } else if(input == 0 && oprt == divide) { //guards against calculator crash
     display.innerHTML = `Smart ass eh? ${a} divide by zero is infinity!!!`
   } else {
     b = input;                // to run operations
@@ -87,13 +82,13 @@ function getSignKeys(e) {
   } else{return;}
 }
 
-function getDotKey(e) {
+function inputDot() {
   if(input.includes(".") || (display.innerHTML.includes(".")) ) {
     flashScreen(); //to allow only one input of "."
   } else {
     clickNum(dot);
   } //end if
-} 
+}
 
 function flashScreen() {
   display.style.backgroundColor = "red";
@@ -122,14 +117,6 @@ let b = ""; //holds second value for calculation
 let oprt = ""; //temporarily holds current calculation operator
 let input = ""; //temporarily holds calcutor input 
 
-
-dot.addEventListener("click", () => {
-  if(input.includes(".") || (display.innerHTML.includes(".")) ) {
-    flashScreen(); //to allow only one input of "."
-  } else {
-    clickNum(dot);
-  } //end if
-});
-
 numKey.forEach( test => this.addEventListener("keydown", () => this.onclick() ) );
 signKey.forEach( test => this.addEventListener("keydown", getSignKeys ) );
+dot.addEventListener("keydown", inputDot);
